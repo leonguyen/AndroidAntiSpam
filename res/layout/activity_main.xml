@@ -31,6 +31,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnBlackList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -52,15 +53,16 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:background="@drawable/button_color"
-        android:text="SMS Filter"
+        android:text="Blocked SMS"
         android:textColor="#fff" />
 
     <Button
+        android:id="@+id/btnBlockCall"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:background="@drawable/button_color"
-        android:text="Logs"
+        android:text="Blocked Call"
         android:textColor="#fff" />
 
     <Button

@@ -8,6 +8,10 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
 
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+	<uses-permission android:name="android.permission.PROCESS_INCOMING_CALLS" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -22,6 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.antispam.CallLogActivity"
+            android:label="Blocked Call" />
+        <activity
+            android:name="com.example.antispam.BlackListActivity"
+            android:label="Black List" />
+
+        <receiver android:name="com.example.antispam.BlockCallReceiver" >
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
