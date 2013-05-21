@@ -11,7 +11,7 @@
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.CALL_PHONE" />
 	<uses-permission android:name="android.permission.PROCESS_INCOMING_CALLS" />
-
+	<uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -27,15 +27,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.antispam.CallLogActivity"
-            android:label="Blocked Call" />
-        <activity
             android:name="com.example.antispam.BlackListActivity"
             android:label="Black List" />
+        <activity
+            android:name="com.example.antispam.SmsLogActivity"
+            android:label="Blocked Sms" />
+        <activity
+            android:name="com.example.antispam.CallLogActivity"
+            android:label="Blocked Call" />
+        
 
-        <receiver android:name="com.example.antispam.BlockCallReceiver" >
+        <receiver android:name="com.example.antispam.BlockReceiver" >
             <intent-filter android:priority="999">
                 <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
     </application>

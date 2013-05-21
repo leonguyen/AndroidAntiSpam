@@ -11,6 +11,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	private CallDA cda = null;
 	private BlackListDA blda = null;
+	private SmsDA smsda = null;
 
 	public DBHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -28,6 +29,12 @@ public class DBHelper extends SQLiteOpenHelper {
 			blda = new BlackListDA(this);
 		return blda;
 	}
+	
+	public SmsDA getSmsDA() {
+		if (smsda == null)
+			smsda = new SmsDA(this);
+		return smsda;
+	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
@@ -36,6 +43,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		cda.onCreate(db);
 		blda = new BlackListDA(this);
 		blda.onCreate(db);
+		smsda = new SmsDA(this);
+		smsda.onCreate(db);
 	}
 
 	@Override
@@ -43,5 +52,6 @@ public class DBHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 		cda.onUpgrade(db, oldVersion, newVersion);
 		blda.onUpgrade(db, oldVersion, newVersion);
+		smsda.onUpgrade(db, oldVersion, newVersion);
 	}
 }
