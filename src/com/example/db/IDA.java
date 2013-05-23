@@ -1,4 +1,4 @@
-package com.example.antispam;
+package com.example.db;
 
 import java.util.List;
 

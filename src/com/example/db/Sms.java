@@ -1,19 +1,22 @@
-package com.example.antispam;
+package com.example.db;
 
 public class Sms {
 	int id;
 	String sms;
+	String time;
 
 	public Sms() {
 	}
 
-	public Sms(int id, String s) {
+	public Sms(int id, String s, String t) {
 		this.id = id;
 		this.sms = s;
+		this.time = t;
 	}
 
-	public Sms(String s) {
+	public Sms(String s, String t) {
 		this.sms = s;
+		this.time = t;
 	}
 
 	public int getID() {
@@ -30,5 +33,13 @@ public class Sms {
 
 	public void setSms(String s) {
 		this.sms = s;
+	}
+
+	public String getTime() {
+		return this.time;
+	}
+
+	public void setTime(String t) {
+		this.time = t;
 	}
 }

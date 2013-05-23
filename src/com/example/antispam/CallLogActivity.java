@@ -2,6 +2,10 @@ package com.example.antispam;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.db.Call;
+import com.example.db.CallDA;
+
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -19,7 +23,7 @@ public class CallLogActivity extends ListActivity {
 		CallDA da = dbHelper.getCallDA();
 		List<Call> list = da.getAll();
 		for (Call call : list) {
-			String str = "<b>" + call.getNumber() + "</b>"; 
+			String str = call.getNumber() + " - " + call.getTime(); 
 			arr.add(Html.fromHtml(str).toString());
 		}
 		

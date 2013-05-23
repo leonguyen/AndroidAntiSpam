@@ -1,4 +1,4 @@
-package com.example.antispam;
+package com.example.db;
 
 public class BlackList implements IPhoneNumber {
 	int id;

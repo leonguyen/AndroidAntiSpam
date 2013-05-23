@@ -1,4 +1,4 @@
-package com.example.antispam;
+package com.example.db;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,24 +8,26 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
  
-public class CallDA {
+public class SmsDA {
 	// Helper
 	private SQLiteOpenHelper sqlHelper;
  
 	// Table name
-	private static final String TABLE_NAME = "call";
+	private static final String TABLE_NAME = "sms";
  
 	// Table Columns names
 	public static final String KEY_ID = "id";
-	public static final String KEY_NUM = "number";
+	public static final String KEY_SMS = "sms";
+	public static final String KEY_TIME = "time";
+	
  
-	public CallDA(SQLiteOpenHelper helper) {
+	public SmsDA(SQLiteOpenHelper helper) {
 		sqlHelper = helper;
 	}
  
 	public static void onCreate(SQLiteDatabase db) {
 		String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_NAME + "("
-				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NUM + " TEXT" + ")";
+				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_SMS + " TEXT," + KEY_TIME + " TEXT" + ")";
 		db.execSQL(CREATE_CONTACTS_TABLE);
 		Log.d(TABLE_NAME, "DB created!");
 	}
@@ -41,33 +43,33 @@ public class CallDA {
 	/**
 	 * All CRUD(Create, Read, Update, Delete) Operations
 	 */ 
-	public void add(Call obj) {
+	public void add(Sms obj) {
 		SQLiteDatabase db = sqlHelper.getWritableDatabase();
  
 		ContentValues values = new ContentValues();
-		values.put(KEY_NUM, obj.getNumber());
+		values.put(KEY_SMS, obj.getSms());
+		values.put(KEY_TIME, obj.getTime());
  
 		// Inserting Row
 		db.insert(TABLE_NAME, null, values);
 		db.close(); // Closing database connection
 	}
  
-	public Call get(int id) {
+	public Sms get(int id) {
 		SQLiteDatabase db = sqlHelper.getReadableDatabase();
  
-		Cursor cursor = db.query(TABLE_NAME, new String[] { KEY_ID, KEY_NUM },
+		Cursor cursor = db.query(TABLE_NAME, new String[] { KEY_ID, KEY_SMS, KEY_TIME },
 				KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null,
 				null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
  
-		Call obj = new Call(Integer.parseInt(cursor.getString(0)),
-				cursor.getString(1));
+		Sms obj = new Sms(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
 		return obj;
 	}
  
-	public List<Call> getAll() {
-		List<Call> list = new ArrayList<Call>();
+	public List<Sms> getAll() {
+		List<Sms> list = new ArrayList<Sms>();
 		// Select All Query
 		String selectQuery = "SELECT  * FROM " + TABLE_NAME;
  
@@ -77,9 +79,10 @@ public class CallDA {
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Call obj = new Call();
+				Sms obj = new Sms();
 				obj.setID(Integer.parseInt(cursor.getString(0)));
-				obj.setNumber(cursor.getString(1));
+				obj.setSms(cursor.getString(1));
+				obj.setTime(cursor.getString(2));
 				// Adding user to list
 				list.add(obj);
 			} while (cursor.moveToNext());
@@ -88,18 +91,19 @@ public class CallDA {
 		return list;
 	}
  
-	public int update(Call obj) {
+	public int update(Sms obj) {
 		SQLiteDatabase db = sqlHelper.getWritableDatabase();
  
 		ContentValues values = new ContentValues();
-		values.put(KEY_NUM, obj.getNumber());
+		values.put(KEY_SMS, obj.getSms());
+		values.put(KEY_TIME, obj.getTime());
  
 		// updating row
 		return db.update(TABLE_NAME, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(obj.getID()) });
 	}
  
-	public void delete(Call obj) {
+	public void delete(Sms obj) {
 		SQLiteDatabase db = sqlHelper.getWritableDatabase();
 		db.delete(TABLE_NAME, KEY_ID + " = ?",
 				new String[] { String.valueOf(obj.getID()) });

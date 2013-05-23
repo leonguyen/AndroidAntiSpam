@@ -2,6 +2,10 @@ package com.example.antispam;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.db.Sms;
+import com.example.db.SmsDA;
+
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -19,7 +23,7 @@ public class SmsLogActivity extends ListActivity {
 		SmsDA da = dbHelper.getSmsDA();
 		List<Sms> list = da.getAll();
 		for (Sms sms : list) {
-			String str = "<b>" + sms.getSms() + "</b>"; 
+			String str = sms.getSms() + " - " + sms.getTime(); 
 			arr.add(Html.fromHtml(str).toString());
 		}
 		

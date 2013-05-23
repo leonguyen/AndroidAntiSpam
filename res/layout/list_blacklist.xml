@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/txtBlackList"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dip"
-    android:textSize="16dip" >
+    android:layout_height="match_parent" >
 
-</TextView>
+    <TextView
+        android:id="@+id/txtBlackId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:textSize="16dip"
+        android:visibility="gone" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/txtBlackList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/txtBlackId"
+        android:padding="10dip"
+        android:textSize="16dip" >
+    </TextView>
+
+</RelativeLayout>

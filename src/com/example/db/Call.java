@@ -1,19 +1,22 @@
-package com.example.antispam;
+package com.example.db;
 
 public class Call implements IPhoneNumber {
 	int id;
 	String number;
+	String time;
  
 	public Call() {
 	}
  
-	public Call(int id, String num) {
+	public Call(int id, String num, String t) {
 		this.id = id;
 		this.number = num;
+		this.time = t;
 	}
  
-	public Call(String num) {
+	public Call(String num, String t) {
 		this.number = num;
+		this.time = t;
 	}
  
 	public int getID() {
@@ -30,5 +33,13 @@ public class Call implements IPhoneNumber {
  
 	public void setNumber(String num) {
 		this.number = num;
+	}
+	
+	public String getTime() {
+		return this.time;
+	}
+ 
+	public void setTime(String t) {
+		this.time = t;
 	}
 }

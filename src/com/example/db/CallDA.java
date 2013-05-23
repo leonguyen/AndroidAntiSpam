@@ -1,4 +1,4 @@
-package com.example.antispam;
+package com.example.db;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,24 +8,25 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
  
-public class BlackListDA {
+public class CallDA {
 	// Helper
 	private SQLiteOpenHelper sqlHelper;
  
 	// Table name
-	private static final String TABLE_NAME = "blacklist";
+	private static final String TABLE_NAME = "call";
  
 	// Table Columns names
 	public static final String KEY_ID = "id";
 	public static final String KEY_NUM = "number";
+	public static final String KEY_TIME = "time";
  
-	public BlackListDA(SQLiteOpenHelper helper) {
+	public CallDA(SQLiteOpenHelper helper) {
 		sqlHelper = helper;
 	}
  
 	public static void onCreate(SQLiteDatabase db) {
 		String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_NAME + "("
-				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NUM + " TEXT" + ")";
+				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NUM + " TEXT," + KEY_TIME + " TEXT" + ")";
 		db.execSQL(CREATE_CONTACTS_TABLE);
 		Log.d(TABLE_NAME, "DB created!");
 	}
@@ -41,61 +42,47 @@ public class BlackListDA {
 	/**
 	 * All CRUD(Create, Read, Update, Delete) Operations
 	 */ 
-	public void add(BlackList obj) {
+	public void add(Call obj) {
 		SQLiteDatabase db = sqlHelper.getWritableDatabase();
  
 		ContentValues values = new ContentValues();
 		values.put(KEY_NUM, obj.getNumber());
+		values.put(KEY_TIME, obj.getTime());
  
 		// Inserting Row
 		db.insert(TABLE_NAME, null, values);
 		db.close(); // Closing database connection
 	}
  
-	public BlackList get(int id) {
+	public Call get(int id) {
 		SQLiteDatabase db = sqlHelper.getReadableDatabase();
  
-		Cursor cursor = db.query(TABLE_NAME, new String[] { KEY_ID, KEY_NUM },
+		Cursor cursor = db.query(TABLE_NAME, new String[] { KEY_ID, KEY_NUM, KEY_TIME },
 				KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null,
 				null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
  
-		BlackList obj = new BlackList(Integer.parseInt(cursor.getString(0)),
-				cursor.getString(1));
-		return obj;
-	}
-
-	public BlackList getNum(String num) {
-		SQLiteDatabase db = sqlHelper.getReadableDatabase();
- 
-		Cursor cursor = db.query(TABLE_NAME, new String[] { KEY_ID, KEY_NUM },
-				KEY_NUM + "=?", new String[] { String.valueOf(num) }, null, null,
-				null, null);
-		if (cursor != null)
-			cursor.moveToFirst();
- 
-		BlackList obj = new BlackList(Integer.parseInt(cursor.getString(0)),
-				cursor.getString(1));
+		Call obj = new Call(Integer.parseInt(cursor.getString(0)),
+				cursor.getString(1), cursor.getString(2));
 		return obj;
 	}
  
-	public List<BlackList> getAll() {
-		List<BlackList> list = new ArrayList<BlackList>();
+	public List<Call> getAll() {
+		List<Call> list = new ArrayList<Call>();
 		// Select All Query
 		String selectQuery = "SELECT  * FROM " + TABLE_NAME;
  
 		SQLiteDatabase db = sqlHelper.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
  
-		
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				BlackList obj = new BlackList();
+				Call obj = new Call();
 				obj.setID(Integer.parseInt(cursor.getString(0)));
 				obj.setNumber(cursor.getString(1));
-				// Adding user to list
+				obj.setTime(cursor.getString(2));
 				list.add(obj);
 			} while (cursor.moveToNext());
 		}
@@ -108,7 +95,8 @@ public class BlackListDA {
  
 		ContentValues values = new ContentValues();
 		values.put(KEY_NUM, obj.getNumber());
- 
+		values.put(KEY_TIME, obj.getTime());
+		
 		// updating row
 		return db.update(TABLE_NAME, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(obj.getID()) });
@@ -120,7 +108,12 @@ public class BlackListDA {
 				new String[] { String.valueOf(obj.getID()) });
 		db.close();
 	}
-	
+
+	public void deleteAll() {
+		SQLiteDatabase db= sqlHelper.getWritableDatabase();
+	    db.delete(TABLE_NAME, null, null);
+	}
+ 
 	public int getCount() {
 		String countQuery = "SELECT  * FROM " + TABLE_NAME;
 		SQLiteDatabase db = sqlHelper.getReadableDatabase();

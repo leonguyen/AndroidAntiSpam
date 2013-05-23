@@ -1,6 +1,15 @@
 package com.example.antispam;
 
 import java.lang.reflect.Method;
+import java.util.Calendar;
+
+import com.example.db.BlackList;
+import com.example.db.BlackListDA;
+import com.example.db.Call;
+import com.example.db.CallDA;
+import com.example.db.Sms;
+import com.example.db.SmsDA;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -31,13 +40,14 @@ public class BlockReceiver extends BroadcastReceiver {
 		        String phoneNumber = bundle.getString("incoming_number");
 		        dbHelper = new DBHelper(pContext);
 		        BlackListDA blda = dbHelper.getBlackListDA();
+		        String curTime = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 		        //Blocked Call
 		        if (phoneNumber != null) {				    
 					BlackList obj = blda.getNum(phoneNumber.toString());
 					if (obj != null) {
-						if(telephonyService.endCall()){
+						if(telephonyService.endCall()){							
 							CallDA cda = dbHelper.getCallDA();
-							cda.add(new Call(phoneNumber));
+							cda.add(new Call(phoneNumber,curTime));
 						}
 					}
 				}
@@ -54,7 +64,7 @@ public class BlockReceiver extends BroadcastReceiver {
 								if (obj != null) {
 									abortBroadcast();										
 									SmsDA smsda = dbHelper.getSmsDA();
-									smsda.add(new Sms(strMsgBody));
+									smsda.add(new Sms(strMsgBody,curTime));
 								}
 							}
 						}
