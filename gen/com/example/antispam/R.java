@@ -25,13 +25,15 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000b;
+        public static final int action_settings=0x7f08000d;
         public static final int btnBlackList=0x7f080000;
         public static final int btnBlockCall=0x7f080002;
         public static final int btnBlockSms=0x7f080001;
         public static final int btnOK=0x7f080004;
         public static final int mnuAddNum=0x7f080009;
-        public static final int mnu_del=0x7f08000a;
+        public static final int mnuAddNumContact=0x7f08000a;
+        public static final int mnuAddNumLog=0x7f08000b;
+        public static final int mnu_del=0x7f08000c;
         public static final int txtAddNum=0x7f080003;
         public static final int txtBlackId=0x7f080005;
         public static final int txtBlackList=0x7f080006;
