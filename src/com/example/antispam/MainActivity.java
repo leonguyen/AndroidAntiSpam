@@ -1,7 +1,6 @@
 package com.example.antispam;
 
 import com.example.db.CallDA;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;

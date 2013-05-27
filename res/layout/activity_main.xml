@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:paddingBottom="35dp"
@@ -26,52 +27,36 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Anti Spam"
+            android:text="AntiSpam"
             android:textSize="38dp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnBlackList"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/button_color"
-        android:text="Black List"
-        android:textColor="#fff" />
+        style="@style/ButtonText"
+        android:background="@drawable/bg_button"
+        android:text="Black List" />
 
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/button_color"
-        android:text="White List"
-        android:textColor="#fff" />
+        style="@style/ButtonText"
+        android:background="@drawable/bg_button"
+        android:text="White List" />
 
     <Button
         android:id="@+id/btnBlockSms"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/button_color"
-        android:text="Blocked SMS"
-        android:textColor="#fff" />
+        style="@style/ButtonText"
+        android:background="@drawable/bg_button"
+        android:text="Blocked SMS" />
 
     <Button
         android:id="@+id/btnBlockCall"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/button_color"
-        android:text="Blocked Call"
-        android:textColor="#fff" />
+        style="@style/ButtonText"
+        android:background="@drawable/bg_button"
+        android:text="Blocked Call" />
 
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/button_color"
-        android:text="Settings"
-        android:textColor="#fff" />
+        style="@style/ButtonText"
+        android:background="@drawable/bg_button"
+        android:text="Settings" />
 
 </LinearLayout>
