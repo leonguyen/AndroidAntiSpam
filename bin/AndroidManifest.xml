@@ -33,7 +33,7 @@
             android:label="Black List" />
         <activity
             android:name="com.example.antispam.SmsLogActivity"
-            android:label="Blocked Sms" />
+            android:label="Blocked SMS" />
         <activity
             android:name="com.example.antispam.CallLogActivity"
             android:label="Blocked Call" />

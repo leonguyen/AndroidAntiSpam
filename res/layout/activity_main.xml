@@ -34,29 +34,29 @@
     <Button
         android:id="@+id/btnBlackList"
         style="@style/ButtonText"
-        android:background="@drawable/bg_button"
+        android:background="@drawable/color_button"
         android:text="Black List" />
 
     <Button
         style="@style/ButtonText"
-        android:background="@drawable/bg_button"
+        android:background="@drawable/color_button"
         android:text="White List" />
 
     <Button
         android:id="@+id/btnBlockSms"
         style="@style/ButtonText"
-        android:background="@drawable/bg_button"
+        android:background="@drawable/color_button"
         android:text="Blocked SMS" />
 
     <Button
         android:id="@+id/btnBlockCall"
         style="@style/ButtonText"
-        android:background="@drawable/bg_button"
+        android:background="@drawable/color_button"
         android:text="Blocked Call" />
 
     <Button
         style="@style/ButtonText"
-        android:background="@drawable/bg_button"
+        android:background="@drawable/color_button"
         android:text="Settings" />
 
 </LinearLayout>
