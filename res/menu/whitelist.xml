@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/mnuAddNumWhite"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Add number"/>
+    
+    <item
+        android:id="@+id/mnuAddNumContactWhite"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Add number contact"/>
+    
+    <item
+        android:id="@+id/mnuAddNumLogWhite"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Add number call log"/>
+
+</menu>
