@@ -38,6 +38,7 @@
         android:text="Black List" />
 
     <Button
+        android:id="@+id/btnWhiteList"
         style="@style/ButtonText"
         android:background="@drawable/color_button"
         android:text="White List" />

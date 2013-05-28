@@ -61,10 +61,10 @@ public class SmsDA {
 		Cursor cursor = db.query(TABLE_NAME, new String[] { KEY_ID, KEY_SMS, KEY_TIME },
 				KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null,
 				null, null);
+		Sms obj = null;
 		if (cursor != null)
-			cursor.moveToFirst();
- 
-		Sms obj = new Sms(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+			if(cursor.moveToFirst())
+				obj = new Sms(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
 		return obj;
 	}
  

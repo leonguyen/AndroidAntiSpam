@@ -32,6 +32,9 @@
             android:name="com.example.antispam.BlackListActivity"
             android:label="Black List" />
         <activity
+            android:name="com.example.antispam.WhiteListActivity"
+            android:label="White List" />
+        <activity
             android:name="com.example.antispam.SmsLogActivity"
             android:label="Blocked SMS" />
         <activity

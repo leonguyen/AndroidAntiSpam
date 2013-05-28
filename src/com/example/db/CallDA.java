@@ -60,10 +60,10 @@ public class CallDA {
 		Cursor cursor = db.query(TABLE_NAME, new String[] { KEY_ID, KEY_NUM, KEY_TIME },
 				KEY_ID + "=?", new String[] { String.valueOf(id) }, null, null,
 				null, null);
+		Call obj = null;
 		if (cursor != null)
-			cursor.moveToFirst();
- 
-		Call obj = new Call(Integer.parseInt(cursor.getString(0)),
+			if(cursor.moveToFirst()) 
+				obj = new Call(Integer.parseInt(cursor.getString(0)),
 				cursor.getString(1), cursor.getString(2));
 		return obj;
 	}

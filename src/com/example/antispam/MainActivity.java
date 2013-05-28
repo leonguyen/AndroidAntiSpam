@@ -29,6 +29,15 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		Button btnWhiteList = (Button) findViewById(R.id.btnWhiteList);
+		btnWhiteList.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stubS
+				Intent intent = new Intent(context, WhiteListActivity.class);
+				startActivity(intent);
+			}
+		});
 		Button btnBlockCall = (Button) findViewById(R.id.btnBlockCall);
 		btnBlockCall.setOnClickListener(new View.OnClickListener() {
 			@Override

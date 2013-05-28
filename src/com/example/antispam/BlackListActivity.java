@@ -62,7 +62,7 @@ public class BlackListActivity extends ListActivity {
 	}
 
 	private void refresh() {
-		List<Map> list = da.getAllByMap();
+		List<Map> list = da.getAllByMap(0);
 		/*
 		 * for (BlackList call : list) { String str = "<b>" + call.getNumber() +
 		 * "</b>"; arr.add(Html.fromHtml(str).toString()); }

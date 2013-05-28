@@ -30,20 +30,26 @@ public final class R {
         public static final int list=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000d;
+        public static final int action_settings=0x7f080010;
         public static final int btnBlackList=0x7f080000;
-        public static final int btnBlockCall=0x7f080002;
-        public static final int btnBlockSms=0x7f080001;
-        public static final int btnOK=0x7f080004;
-        public static final int mnuAddNum=0x7f080009;
-        public static final int mnuAddNumContact=0x7f08000a;
-        public static final int mnuAddNumLog=0x7f08000b;
-        public static final int mnu_del=0x7f08000c;
-        public static final int txtAddNum=0x7f080003;
-        public static final int txtBlackId=0x7f080005;
-        public static final int txtBlackList=0x7f080006;
-        public static final int txtCall=0x7f080007;
-        public static final int txtSms=0x7f080008;
+        public static final int btnBlockCall=0x7f080003;
+        public static final int btnBlockSms=0x7f080002;
+        public static final int btnOK=0x7f080005;
+        public static final int btnWhiteList=0x7f080001;
+        public static final int mnuAddNum=0x7f08000c;
+        public static final int mnuAddNumContact=0x7f08000d;
+        public static final int mnuAddNumContactWhite=0x7f080012;
+        public static final int mnuAddNumLog=0x7f08000e;
+        public static final int mnuAddNumLogWhite=0x7f080013;
+        public static final int mnuAddNumWhite=0x7f080011;
+        public static final int mnu_del=0x7f08000f;
+        public static final int txtAddNum=0x7f080004;
+        public static final int txtBlackId=0x7f080006;
+        public static final int txtBlackList=0x7f080007;
+        public static final int txtCall=0x7f080008;
+        public static final int txtSms=0x7f080009;
+        public static final int txtWhiteId=0x7f08000a;
+        public static final int txtWhiteList=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -51,11 +57,13 @@ public final class R {
         public static final int list_blacklist=0x7f030002;
         public static final int list_calllog=0x7f030003;
         public static final int list_smslog=0x7f030004;
+        public static final int list_whitelist=0x7f030005;
     }
     public static final class menu {
         public static final int blacklist=0x7f070000;
         public static final int context_menu=0x7f070001;
         public static final int main=0x7f070002;
+        public static final int whitelist=0x7f070003;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;

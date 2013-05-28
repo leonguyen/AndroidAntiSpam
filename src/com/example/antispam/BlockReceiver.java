@@ -43,8 +43,9 @@ public class BlockReceiver extends BroadcastReceiver {
 		        String curTime = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 		        //Blocked Call
 		        if (phoneNumber != null) {				    
-					BlackList obj = blda.getNum(phoneNumber.toString());
-					if (obj != null) {
+					BlackList objB = blda.getNum(phoneNumber.toString(),0);
+					BlackList objW = blda.getNum(phoneNumber.toString(),1);
+					if (objB != null && objW == null) {
 						if(telephonyService.endCall()){							
 							CallDA cda = dbHelper.getCallDA();
 							cda.add(new Call(phoneNumber,curTime));
@@ -60,8 +61,9 @@ public class BlockReceiver extends BroadcastReceiver {
 								SmsMessage smsmesg = SmsMessage.createFromPdu((byte[]) pdus[k]);
 								String strMsgBody = smsmesg.getMessageBody().toString();
 								if(strMsgBody.contains("test")){}
-								BlackList obj = blda.getNum(smsmesg.getOriginatingAddress());
-								if (obj != null) {
+								BlackList objB = blda.getNum(smsmesg.getOriginatingAddress(),0);
+								BlackList objW = blda.getNum(smsmesg.getOriginatingAddress(),1);
+								if (objB != null && objW == null) {
 									abortBroadcast();										
 									SmsDA smsda = dbHelper.getSmsDA();
 									smsda.add(new Sms(strMsgBody,curTime));
