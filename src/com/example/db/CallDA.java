@@ -118,9 +118,10 @@ public class CallDA {
 		String countQuery = "SELECT  * FROM " + TABLE_NAME;
 		SQLiteDatabase db = sqlHelper.getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
-		cursor.close();
- 
-		// return count
-		return cursor.getCount();
+		if(cursor.moveToFirst()){
+			cursor.close();
+			return cursor.getCount();
+		} else
+			return 0;
 	}
 }

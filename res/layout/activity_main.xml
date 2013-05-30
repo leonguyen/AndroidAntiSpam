@@ -58,6 +58,7 @@
     <Button
         style="@style/ButtonText"
         android:background="@drawable/color_button"
+        android:visibility="gone"
         android:text="Settings" />
 
 </LinearLayout>
